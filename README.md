@@ -58,3 +58,46 @@ Each declared variable is stored in the computer's memory at some address. A poi
 
 ![image](https://github.com/TenHam3/CS-2413/assets/109705811/6b92ba3f-0484-48e0-b133-bd93451ee29c)
 
+## Dynamic Memory Allocation and Vectors in C++
+
+### Memory Allocation
+
+#### Static Memory Allocation
+
+When variables are declared in a program (based on regular syntaxes), a set of memory chunks are allocated for them at the compile time, before the program runs. These chunks are also fixed when the program runs.
+
+This partly explains why the array size must be specified during declaration, since the number of memory chunks must be fixed at compile time. Not allowed to specify array size when the program runs.
+
+#### Dynamic Memory Allocation
+
+C++ reserves a large blocks of memory called free store or heap, which can be dynamically allocated (for new variables) when the program runs. It is crucial to hold the address of this chunk using a pointer so we can access it in the future. You can use and perform operations on the pointer in the same way as statically allocated chunks.
+
+Dynamically allocated memory can be deleted when the program runs, to free space for new allocations. "delete" really means "free" so this chunk of memory can be overwritten for other purposes. 
+- delete p; means to free the allocated space (at the address in "p"). After that, no data can be retrieved through "p"
+
+"delete" can only be used to free dynamically allocated space. Statically allocated space cannot be freed manually. It is automatically freed when its program (or function) lifecycle ends. Dynamically allocated memory (even if declared locally) stays in heap forever, until freed by "delete" or main program ends. If not deleted properly, they can quickly take up heap and cause memory leak. Need to free a dynamically allocated chunk before its current pointer is reassigned because you will lose track of the dynamically allocated space and cannot access it again, thus not being able to be freed and causing a memory leak. Otherwise, we will lose track of this chunk adn it will stay in the heap forever (until main dies). We can also dynamically allocate consecutive chunks for an array. Used in the same way as statically allocated space for an array. Delete using "delete []" followed by the array name.
+
+### Vector
+
+A vector is an array-like abstract data type that supports operations like size, empty, set, erase, etc. You have to include the vector library to use vectors. All entries are auto-initialized to zero.
+
+![image](https://github.com/TenHam3/CS-2413/assets/109705811/c9954f1f-c818-4bdd-b469-5692e617e408)
+
+- Method 2 specifies the size first, then the shared values so vector y would have 4 elements, each of which have the value 2
+
+The resize() function resizes the vector. Two scenarios:
+1. If the original vector is shorter,a ppend 0's to its tail
+2. If the original vector is longer, remove last entries
+The size() function returns the vector size. You can use the "." operator to access member functions of the vectors, treating it as an object.
+
+Push_back() adds an element to the end of the vector. This increases the size by 1. Pop_back() removes the last element from the end of teh vector. This reduces size by 1. We can add an element to a position that is outside the vector. This will automatically increase vector size to the position, and fill other added positions with zeros.
+
+We can directly assign values to a declared vector ( not allowed in array). If the assigned value number differs from the vector size, vector size will automatically adapt to that number. We can also directly assign a vector to another vector (not allowed in arrays) even if they have different dimensions. This creates a copy of the input vector. 
+
+#### Iterator
+
+An iterator to a vector is like ap ointer to array. It holds the address of the vector (element). 
+
+#### Insert and Erase
+
+The insert() function inserts a new value into a vector at a specific poisiton (described by an iterator). Old elements on or after this position are all shifted backwards. The erase() function removes an existing element at a specific position. 
