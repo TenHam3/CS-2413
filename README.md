@@ -101,3 +101,26 @@ An iterator to a vector is like ap ointer to array. It holds the address of the 
 #### Insert and Erase
 
 The insert() function inserts a new value into a vector at a specific poisiton (described by an iterator). Old elements on or after this position are all shifted backwards. The erase() function removes an existing element at a specific position. 
+
+## Linked List
+
+A linked list is an ADT that links a set of objects to form a list (looks like a virtual array). Importantly, these objects can be separately stored in the memory fragments, improving efficiency of memory usage.
+
+We can travel from one node to another through directional links (and only through these links). We will stick to the understanding that all links are directional (a bidirectional link = two directed links)
+
+![image](https://github.com/TenHam3/CS-2413/assets/109705811/7c5a5e00-f042-49d5-b85f-ac6fbb6b9ccf)
+
+### Basic Operations
+
+- Traverse: travel from head to tail (base).
+- Enumerate: enumerate all elements in the list
+- Size: count the number of elements in the list
+- Find: find an element in the list
+- Insert: add an element to the list
+- Remove: remove an element from the list
+- Clear: remove all elements in the list
+
+You need an iterator to access nodes. Iterators are similar to pointers in that you can use the * operator to access the data that the iterator is pointing at. 
+
+![image](https://github.com/TenHam3/CS-2413/assets/109705811/93911b0c-da7a-4415-bd82-d5f1559c5fd3)
+
